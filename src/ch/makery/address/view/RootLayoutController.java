@@ -8,6 +8,7 @@ import javafx.stage.FileChooser;
 //import org.controlsfx.dialog.Dialogs;
 
 import ch.makery.address.MainApp;
+import org.controlsfx.dialog.Dialogs;
 
 /**
  * The controller for the root layout. The root layout provides the basic
