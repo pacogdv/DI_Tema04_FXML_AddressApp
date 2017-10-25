@@ -12,6 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import ch.makery.address.model.Person;
 import ch.makery.address.util.DateUtil;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -31,12 +33,18 @@ public class PersonEditDialogController {
     private TextField cityField;
     @FXML
     private TextField birthdayField;
+    @FXML
+    private TextField emailField;
+    @FXML
+    private TextField telephoneField;
 
 
     private Stage dialogStage;
     private Person person;
     private boolean okClicked = false;
 
+    private static final String PATTERN_EMAIL = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
     /**
      * Initializes the controller class. This method is automatically called
      * after the fxml file has been loaded.
@@ -69,6 +77,8 @@ public class PersonEditDialogController {
         cityField.setText(person.getCity());
         birthdayField.setText(DateUtil.format(person.getBirthday()));
         birthdayField.setPromptText("dd.mm.yyyy");
+        emailField.setText(person.getEmail());
+        telephoneField.setText(Integer.toString(person.getTelephone()));
     }
 
     /**
@@ -92,6 +102,8 @@ public class PersonEditDialogController {
             person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
             person.setCity(cityField.getText());
             person.setBirthday(DateUtil.parse(birthdayField.getText()));
+            person.setEmail(emailField.getText());
+            person.setTelephone(Integer.parseInt(telephoneField.getText()));
 
             okClicked = true;
             dialogStage.close();
@@ -144,6 +156,32 @@ public class PersonEditDialogController {
         } else {
             if (!DateUtil.validDate(birthdayField.getText())) {
                 errorMessage += "No valid birthday. Use the format dd.mm.yyyy!\n";
+            }
+        }
+
+        if (telephoneField.getText() == null || telephoneField.getText().length() == 0) {
+            errorMessage += "No valid telephone!\n"; 
+        } else {
+            // try to parse the postal code into an int.
+            try {
+                Integer.parseInt(telephoneField.getText());
+            } catch (NumberFormatException e) {
+                errorMessage += "No valid telephone(must be an integer)!\n"; 
+            }
+        }
+
+        if (emailField.getText() == null || emailField.getText().length() == 0) {
+            errorMessage += "No valid email!\n"; 
+        } else {
+            // try to parse the postal code into an int.
+            try {
+                Pattern pattern = Pattern.compile(PATTERN_EMAIL);
+                Matcher matcher = pattern.matcher(emailField.getText());
+                if (!matcher.matches()) {
+                    errorMessage += "No valid email!\n";
+                }
+            } catch (NumberFormatException e) {
+                errorMessage += "No valid email!\n"; 
             }
         }
 
