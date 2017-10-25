@@ -8,7 +8,6 @@ import javafx.stage.FileChooser;
 //import org.controlsfx.dialog.Dialogs;
 
 import ch.makery.address.MainApp;
-import org.controlsfx.dialog.Dialogs;
 
 /**
  * The controller for the root layout. The root layout provides the basic
@@ -121,8 +120,25 @@ public class RootLayoutController {
     /**
     * Opens the birthday statistics.
     */
-   @FXML
-   private void handleShowBirthdayStatistics() {
-     mainApp.showBirthdayStatistics();
-   }
+    @FXML
+    private void handleShowBirthdayStatistics() {
+        mainApp.showBirthdayStatistics();
+    }
+
+    /**
+    * Opens the birthday statistics.
+    */
+    @FXML
+    private void handleShowBirthdayStatisticsPieChart() {
+        mainApp.showBirthdayStatisticsPieChart();
+//        mainApp.showBirthdayStatistics();
+    }
+
+    /**
+    * Opens the birthday statistics.
+    */
+    @FXML
+    private void handleShowBirthdayStatisticsStackedBarChart() {
+        mainApp.showBirthdayStatisticsStackedBarChart();
+    }
 }

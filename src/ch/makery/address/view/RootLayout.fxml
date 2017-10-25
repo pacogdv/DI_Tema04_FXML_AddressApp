@@ -22,6 +22,8 @@
           <Menu mnemonicParsing="false" text="Statistics">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#handleShowBirthdayStatistics" text="Show Statistics" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleShowBirthdayStatisticsPieChart" text="Show PieChart" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleShowBirthdayStatisticsStackedBarChart" text="Show StackedBarChart" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
