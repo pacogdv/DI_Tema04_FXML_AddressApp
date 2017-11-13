@@ -5,6 +5,7 @@
  */
 package ch.makery.address;
 
+
 import ch.makery.address.model.Person;
 import ch.makery.address.model.PersonListWrapper;
 import ch.makery.address.view.BirthdayStatisticsController;
@@ -16,7 +17,6 @@ import ch.makery.address.view.RootLayoutController;
 import java.io.File;
 import java.io.IOException;
 import java.util.prefs.Preferences;
-
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
